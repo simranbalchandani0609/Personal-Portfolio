@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Abstract illustration of lake outlines and contour lines">
+  <defs>
+    <radialGradient id="g" cx="38%" cy="48%" r="70%"><stop offset="0" stop-color="#0f4a50"/><stop offset="1" stop-color="#0a1416"/></radialGradient>
+  </defs>
+  <rect width="640" height="400" fill="url(#g)"/>
+  <g fill="none" stroke="#2fb3a8" stroke-width="1.4" opacity=".55">
+    <path d="M60 300 C140 250 190 270 260 230 S400 150 470 170 S590 120 620 90"/>
+    <path d="M40 330 C130 280 200 300 275 262 S410 185 480 205 S600 160 630 132"/>
+    <path d="M20 360 C120 312 210 330 290 294 S420 220 490 240 S610 200 640 175"/>
+  </g>
+  <g fill="#1b8f8a" fill-opacity=".30" stroke="#5ed6c8" stroke-width="1.5">
+    <path d="M168 150 C185 112 245 100 290 120 C340 140 352 190 318 224 C282 258 214 252 184 222 C160 198 156 172 168 150Z"/>
+  </g>
+  <g fill="#27b5a8" fill-opacity=".38" stroke="#8ae8dc" stroke-width="1.5">
+    <path d="M214 160 C226 138 262 132 286 146 C312 162 314 192 292 208 C266 226 232 220 218 200 C208 186 206 172 214 160Z"/>
+  </g>
+  <g fill="#e50914" fill-opacity=".85"><circle cx="330" cy="168" r="4.5"/></g>
+  <g fill="#ffffff" fill-opacity=".55">
+    <circle cx="410" cy="122" r="2.5"/><circle cx="452" cy="96" r="2"/><circle cx="505" cy="140" r="2.5"/><circle cx="388" cy="248" r="2"/><circle cx="96" cy="108" r="2"/><circle cx="130" cy="64" r="2.5"/>
+  </g>
+  <g stroke="#ffffff" stroke-opacity=".18" stroke-width="1"><path d="M410 122L452 96L505 140"/><path d="M96 108L130 64"/><path d="M330 168L410 122"/><path d="M388 248L330 168"/></g>
+</svg>

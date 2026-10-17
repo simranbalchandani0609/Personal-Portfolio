@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Simran Balchandani | MBA (Tech) Data Science student</title>
+  <meta name="description" content="Simran Balchandani is an MBA (Tech) Data Science student at MPSTME, NMIMS, Mumbai. Projects: MediCloud v2, a Flight Management Dashboard and a GIS research paper in progress.">
+  <meta name="theme-color" content="#141414">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Simran Balchandani | MBA (Tech) Data Science student">
+  <meta property="og:description" content="Hospital platform on AWS, a flight operations dashboard and a satellite study of Rajkot's lakes.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>
+  /* Adds .js, and .intro-on on a first visit in this tab (or with ?intro). A failsafe removes it so the page can never stay hidden. */
+  (function () {
+    var d = document.documentElement; d.classList.add('js');
+    var force = /[?&]intro\b/.test(location.search), seen = false;
+    try { seen = !!sessionStorage.getItem('sb-intro'); } catch (e) {}
+    if (force || !seen) { d.classList.add('intro-on'); setTimeout(function () { d.classList.remove('intro-on'); }, 30000); }
+  })();
+</script>
+  <link rel="preload" href="assets/fonts/fraunces-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Opening animation: only shown when JavaScript adds .intro-on to <html>; skippable -->
+  <div class="intro" id="intro" role="dialog" aria-label="Opening animation">
+    <video class="intro-video" id="intro-video" playsinline preload="auto" aria-hidden="true">
+      <source src="assets/video/sb-intro.mp4" type="video/mp4">
+      <source src="assets/video/sb-intro.webm" type="video/webm">
+    </video>
+    <div class="intro-gate" id="intro-gate">
+      <p class="gate-note">Browsers only allow sound after a click or tap.</p>
+      <button type="button" id="intro-start" class="gate-main">Play intro with sound</button>
+      <button type="button" id="intro-silent" class="gate-alt">Continue without sound</button>
+    </div>
+    <div class="intro-ctl">
+      <button type="button" id="intro-sound" aria-pressed="false">Sound: off</button>
+      <button type="button" id="intro-skip">Skip</button>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="#home" aria-label="Simran Balchandani, back to top">
+        <span class="logo" aria-hidden="true"><span class="logo-s">S</span><span class="logo-b">B</span></span>
+      </a>
+      <nav id="site-nav" class="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="bar-tools">
+        <button class="jump-btn" id="open-palette" type="button" aria-haspopup="dialog" aria-label="Search sections (press K)"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span class="nav-toggle-bars" aria-hidden="true"></span></button>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="progress"></i></div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO (billboard) ============ -->
+    <section id="home" class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true">
+        <img class="hero-back" src="assets/img/patient-booking.webp" alt="" width="993" height="700" fetchpriority="high">
+        <canvas id="nodes" class="hero-nodes"></canvas>
+        <img class="hero-front" src="assets/video/flight-dashboard-poster.jpg" alt="" width="1280" height="720">
+        <div class="hero-streak"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-shade"></div>
+      </div>
+      <div class="wrap hero-inner">
+        <ul class="badges hero-step" style="--s:0" aria-label="At a glance">
+          <li>MBA (Tech) Data Science</li><li>MPSTME, NMIMS</li><li>2024 to 2029</li><li>Mumbai</li>
+        </ul>
+        <h1 id="hero-title"><span class="mask"><span class="mask-in">Simran</span></span> <span class="mask"><span class="mask-in">Balchandani</span></span></h1>
+        <p class="lead hero-step" style="--s:3">I'm a data science student who <strong>learns by building</strong>. So far that means a hospital appointment platform on AWS, a flight operations dashboard, and now a satellite study of Rajkot's restored lakes.</p>
+        <p class="actions hero-step" style="--s:4">
+          <a class="btn btn-play" href="#projects"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></svg>Explore My Work</a>
+          <a class="btn btn-info" href="#about"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.2v.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>About Me</a>
+        </p>
+        <dl class="now hero-step" style="--s:5" aria-label="What I'm doing now">
+          <div><dt>Studying</dt><dd>MBA (Tech) Data Science, 2024 to 2029</dd></div>
+          <div><dt>Interning</dt><dd>Web design at DVAB Labs, since May 2025</dd></div>
+          <div><dt>Writing</dt><dd>A GIS paper on Rajkot's lakes (in progress)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="section about" aria-labelledby="about-title">
+      <div class="wrap about-layout">
+        <header class="about-head reveal">
+          <p class="label">About</p>
+          <h2 id="about-title">A little about me</h2>
+        </header>
+
+        <div class="about-body">
+          <blockquote class="about-lead reveal"><p>I enjoy learning through hands-on projects, and data science interests me because it helps turn raw information into useful insights.</p></blockquote>
+
+          <div class="prose reveal">
+            <p>I'm Simran, and I'm studying MBA (Tech) in Data Science at MPSTME, NMIMS (2024 to 2029). I went to school in Rajkot and now study in Mumbai.</p>
+            <p>I learn best through hands-on projects. Data science interests me because it turns raw information into something useful, and I'm most curious about problems where data can help people make better decisions, whether that's a clinic booking system or a flight desk keeping track of delays.</p>
+            <p>Beyond projects, I'm interning on web design at DVAB Labs, writing a GIS research paper, and taking part in student committees. I'm looking towards roles in data science, AI strategy and technology management.</p>
+          </div>
+
+          <dl class="facts reveal">
+            <div><dt>Studying</dt><dd>MBA (Tech) in Data Science, MPSTME, NMIMS</dd></div>
+            <div><dt>Based in</dt><dd>Mumbai, India</dd></div>
+            <div><dt>Interested in</dt><dd>Data science, AI strategy, technology management</dd></div>
+            <div><dt>Outside class</dt><dd>Travel, music, football</dd></div>
+          </dl>
+
+          <div class="outside reveal">
+            <h3>When I'm not studying</h3>
+            <ul>
+              <li><strong>Travel and music</strong><span>Outside of studying and building, travel and music are what I enjoy.</span></li>
+              <li><strong>On the field</strong><span>Goalkeeper for my school football team. 2nd in the 200 m race and 3rd in the relay.</span></li>
+              <li><strong>Words</strong><span>Runner-up in a spelling bee competition (2023).</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section section-rows" aria-labelledby="projects-title">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="label">Projects</p>
+          <h2 id="projects-title">Things I've built</h2>
+          <p class="section-intro">Two finished builds and one study still in progress. Each one says what it does, what it's made with and what I learned. Select a title to open it.</p>
+        </header>
+      </div>
+
+      <div class="row" data-row>
+        <div class="wrap row-head"><h3 id="r-featured">Featured projects</h3></div>
+        <div class="row-wrap">
+          <button class="row-arrow prev" type="button" aria-label="Scroll left" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="rail rail-big" role="list" aria-labelledby="r-featured">
+            <li class="tile tile-project">
+              <button class="tile-btn" type="button" data-open="dlg-medicloud" aria-label="MediCloud v2, working prototype, group project. Open details">
+                <img src="assets/img/patient-booking.webp" width="993" height="700" loading="lazy" alt="">
+                <span class="tile-top">No. 01 · Working prototype</span>
+                <span class="tile-over"><strong>MediCloud v2</strong><span class="tile-tag">Hospital appointments and encrypted records in one system.</span><span class="tile-tech">React · Node.js · Express · DynamoDB · S3 · AWS</span><span class="tile-more">More details</span></span>
+              </button>
+            </li>
+            <li class="tile tile-project">
+              <button class="tile-btn" type="button" data-open="dlg-flight" aria-label="Flight Management Dashboard, working demo. Open details">
+                <img src="assets/video/flight-dashboard-poster.jpg" width="1280" height="720" loading="lazy" alt="">
+                <span class="tile-top">No. 02 · Working demo</span>
+                <span class="tile-over"><strong>Flight Management Dashboard</strong><span class="tile-tag">Flights, passengers, staff and ticket revenue in one place.</span><span class="tile-tech">FastAPI · MySQL · Chart.js · JavaScript</span><span class="tile-more">More details</span></span>
+              </button>
+            </li>
+            <li class="tile tile-project">
+              <button class="tile-btn" type="button" data-open="dlg-gis" aria-label="Rajkot's restored lakes, seen from space, research paper in progress. Open details">
+                <img src="assets/img/gis-rings.svg" width="640" height="400" loading="lazy" alt="">
+                <span class="tile-top">No. 03 · In progress</span>
+                <span class="tile-over"><strong>Rajkot's restored lakes, seen from space</strong><span class="tile-tag">A before-and-after satellite study. No results yet.</span><span class="tile-tech">GIS · Google Earth Engine · Landsat · Sentinel-2</span><span class="tile-more">More details</span></span>
+              </button>
+            </li>
+          </ul>
+          <button class="row-arrow next" type="button" aria-label="Scroll right" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <div class="row" data-row>
+        <div class="wrap row-head"><h3 id="r-shots">Inside MediCloud v2 <span class="row-note">Sample data, not real patients</span></h3></div>
+        <div class="row-wrap">
+          <button class="row-arrow prev" type="button" aria-label="Scroll left" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="rail rail-shots" role="list" aria-labelledby="r-shots">
+          <li class="tile tile-shot"><a class="shot" href="assets/img/patient-booking.webp" target="_blank" rel="noopener"><img src="assets/img/patient-booking.webp" width="993" height="700" loading="lazy" alt="MediCloud patient view, Book a visit: a list of five doctors with specialties and fees, and a grid of time slots for 15 October 2026 with some slots already taken."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/admin-audit-trail.webp" target="_blank" rel="noopener"><img src="assets/img/admin-audit-trail.webp" width="993" height="700" loading="lazy" alt="MediCloud admin view: counts of patients, doctors, admins and appointments, and a live audit trail listing recent actions such as symptom checks and vitals added."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/patient-symptom-check.webp" target="_blank" rel="noopener"><img src="assets/img/patient-symptom-check.webp" width="993" height="700" loading="lazy" alt="MediCloud patient view, Symptom check: a text box reading 'itchy rash on my arm for two days' and a suggestion of Dermatology for a routine visit, with a note that it is not a diagnosis."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/doctor-prescribe.webp" target="_blank" rel="noopener"><img src="assets/img/doctor-prescribe.webp" width="993" height="700" loading="lazy" alt="MediCloud doctor view: a booked visit with the Prescribe form open, showing fields for medicine, dose, how often and number of days."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/patient-health-profile.webp" target="_blank" rel="noopener"><img src="assets/img/patient-health-profile.webp" width="993" height="700" loading="lazy" alt="MediCloud patient view, My health: a health profile form with blood group, height, allergies and long-term conditions, and a vitals form. The emergency contact number is blurred."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/doctor-health-view.webp" target="_blank" rel="noopener"><img src="assets/img/doctor-health-view.webp" width="993" height="700" loading="lazy" alt="MediCloud doctor view of a patient's health profile before a visit: blood group, allergies, conditions, a blood pressure chart and a table of recent vitals. The emergency contact number is blurred."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/patient-prescriptions.webp" target="_blank" rel="noopener"><img src="assets/img/patient-prescriptions.webp" width="993" height="700" loading="lazy" alt="MediCloud patient view, Prescriptions: one prescription listing medicine, dose, how often and days, with the doctor's advice underneath."><span class="tile-cap">Click to enlarge</span></a></li>
+          <li class="tile tile-shot"><a class="shot" href="assets/img/doctor-reviews.webp" target="_blank" rel="noopener"><img src="assets/img/doctor-reviews.webp" width="993" height="700" loading="lazy" alt="MediCloud doctor view, Reviews: an average rating of 4.5 out of 5 from two patient reviews."><span class="tile-cap">Click to enlarge</span></a></li>
+          </ul>
+          <button class="row-arrow next" type="button" aria-label="Scroll right" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section id="skills" class="section" aria-labelledby="skills-title">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="label">Skills</p>
+          <h2 id="skills-title">What I work with</h2>
+          <p class="section-intro">Filled tags are tools I used in the projects above. Outlined tags are on my CV but not in a project on this page.</p>
+        </header>
+      </div>
+      <div class="row" data-row>
+        <div class="wrap row-head"><h3 id="r-skills">Skills by area</h3></div>
+        <div class="row-wrap">
+          <button class="row-arrow prev" type="button" aria-label="Scroll left" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="rail rail-skills" role="list" aria-labelledby="r-skills">
+          <li class="tile tile-skill"><section class="skill-card" data-accent="violet" aria-labelledby="sk-prog">
+            <h3 id="sk-prog">Programming</h3>
+            <ul class="tags">
+              <li class="tag tag-used">Python<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">JavaScript<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">MySQL<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag">R</li>
+              <li class="tag">C++</li>
+            </ul>
+          </section></li>
+          <li class="tile tile-skill"><section class="skill-card" data-accent="coral" aria-labelledby="sk-data">
+            <h3 id="sk-data">Data and analytics</h3>
+            <ul class="tags">
+              <li class="tag tag-used">Data visualization<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">Chart.js<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag">Microsoft Power BI</li>
+              <li class="tag">Tableau</li>
+              <li class="tag">Predictive modeling</li>
+            </ul>
+          </section></li>
+          <li class="tile tile-skill"><section class="skill-card" data-accent="teal" aria-labelledby="sk-cloud">
+            <h3 id="sk-cloud">Cloud and web</h3>
+            <ul class="tags">
+              <li class="tag tag-used">React<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">Node.js<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">Express<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">FastAPI<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">AWS DynamoDB<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">AWS S3<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">AWS SNS<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">AWS CloudWatch<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag tag-used">AWS IAM<span class="sr-only"> (used in a project)</span></li>
+              <li class="tag">AWS CloudFormation</li>
+            </ul>
+          </section></li>
+          <li class="tile tile-skill"><section class="skill-card" data-accent="amber" aria-labelledby="sk-tools">
+            <h3 id="sk-tools">Tools</h3>
+            <ul class="tags">
+              <li class="tag">Microsoft Office</li>
+              <li class="tag">AutoCAD</li>
+              <li class="tag">Mobile application design</li>
+            </ul>
+          </section></li>
+          <li class="tile tile-skill"><section class="skill-card" aria-labelledby="learning-title"><h3 id="learning-title">Currently learning</h3><p>Google Earth Engine and satellite remote sensing (Landsat and Sentinel-2) for my GIS paper.</p></section></li>
+          </ul>
+          <button class="row-arrow next" type="button" aria-label="Scroll right" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+      <div id="map" class="wrap map-wrap">
+        <header class="sub-head reveal">
+          <h3 id="map-title">Which tool went into which project?</h3>
+          <p class="section-intro">Tap a project to light up its tools, or tap a tool to see where I used it. Only tools I actually used in a project are here.</p>
+        </header>
+        <div class="map" id="skill-map" data-map>
+          <div class="map-projects" role="group" aria-label="Projects">
+            <button type="button" class="map-node" data-key="medicloud" aria-pressed="false">MediCloud v2</button>
+            <button type="button" class="map-node" data-key="flight" aria-pressed="false">Flight Management Dashboard</button>
+          </div>
+          <div class="map-tools" role="group" aria-label="Tools used">
+            <button type="button" class="map-tool" data-uses="medicloud flight" aria-pressed="false">JavaScript</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">React</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">Node.js</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">Express</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">AWS DynamoDB</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">AWS S3</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">AWS SNS</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">AWS CloudWatch</button>
+            <button type="button" class="map-tool" data-uses="medicloud" aria-pressed="false">AWS IAM</button>
+            <button type="button" class="map-tool" data-uses="flight" aria-pressed="false">FastAPI</button>
+            <button type="button" class="map-tool" data-uses="flight" aria-pressed="false">MySQL</button>
+            <button type="button" class="map-tool" data-uses="flight" aria-pressed="false">Chart.js</button>
+            <button type="button" class="map-tool" data-uses="flight" aria-pressed="false">CSS</button>
+          </div>
+          <p class="map-readout" id="map-readout" role="status" aria-live="polite">Nothing selected. JavaScript is the one tool both projects share.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EDUCATION, EXPERIENCE AND COURSES ============ -->
+    <section id="education" class="section section-rows" aria-labelledby="education-title">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="label">Education</p>
+          <h2 id="education-title">Education, experience and courses</h2>
+        </header>
+      </div>
+
+      <div class="row" data-row>
+        <div class="wrap row-head"><h3 id="r-edu">Education</h3></div>
+        <div class="row-wrap">
+          <button class="row-arrow prev" type="button" aria-label="Scroll left" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="rail" role="list" aria-labelledby="r-edu">
+            <li class="tile tile-text t-red"><p class="when">2024 to 2029</p><h4>MBA (Tech) in Data Science</h4><p>Mukesh Patel School of Technology Management and Engineering (MPSTME), NMIMS, Mumbai. Expected graduation: 2029.</p></li>
+            <li class="tile tile-text t-teal"><p class="when">2022 to 2024</p><h4>Premier School, Rajkot</h4><p>11th and 12th grade, Rajkot, Gujarat.</p></li>
+            <li class="tile tile-text t-plum"><p class="when">2009 to 2022</p><h4>Saint Paul's School, Rajkot</h4><p>Up to 10th grade, Rajkot, Gujarat.</p></li>
+          </ul>
+          <button class="row-arrow next" type="button" aria-label="Scroll right" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <div class="row" data-row>
+        <div class="wrap row-head"><h3 id="r-exp">Experience and student life</h3></div>
+        <div class="row-wrap">
+          <button class="row-arrow prev" type="button" aria-label="Scroll left" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="rail" role="list" aria-labelledby="r-exp">
+            <li class="tile tile-text t-teal"><p class="when">May 2025 to present</p><h4>Web Design Intern, DVAB Labs</h4><p>DVAB Labs is a technology company building software for the jewellery industry. I assist the team with the design of its website and with software engineering problems.</p></li>
+            <li class="tile tile-text t-plum"><p class="when">2022 and 2024</p><h4>Volunteer Teacher, Sadhu Vaswani Centre (Saurashtra), Rajkot</h4><p>Taught basic trigonometry and science to roughly 200 school-age students across two teaching stints, explaining ideas in simple, clear language.</p></li>
+            <li class="tile tile-text t-red"><p class="when">2024 to 2026</p><h4>Student committees at MPSTME</h4><ul class="plain"><li>IETE-SF: In-House Creatives, Senior Executive (2025-26)</li><li>Social Conclave: Informals Executive (2025-26)</li><li>SATTVA: Marketing Executive (2024-25)</li></ul></li>
+          </ul>
+          <button class="row-arrow next" type="button" aria-label="Scroll right" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+
+      <div class="row" data-row>
+        <div class="wrap row-head"><h3 id="r-certs">Courses and certificates <span class="row-note">Four online courses I completed through Coursera in September 2026. Each has a completion certificate you can open or verify.</span></h3></div>
+        <div class="row-wrap">
+          <button class="row-arrow prev" type="button" aria-label="Scroll left" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <ul class="rail rail-certs" role="list" aria-labelledby="r-certs">
+          <li class="tile tile-cert" data-accent="amber">
+            <a class="cert-thumb" href="assets/certs/aws-cloud-technical-essentials.pdf" target="_blank" rel="noopener">
+              <img src="assets/certs/aws-cloud-technical-essentials.webp" width="720" height="556" loading="lazy" alt="Coursera certificate of completion: AWS Cloud Technical Essentials, Amazon Web Services, awarded to Simran Balchandani on Sep 29, 2026">
+              <span class="sr-only">Open the certificate PDF (opens in a new tab)</span>
+            </a>
+            <span class="cert-issuer">Amazon Web Services</span>
+            <h3>AWS Cloud Technical Essentials</h3>
+            <p class="cert-year">Completed Sep 29, 2026</p>
+            <p class="cert-links">
+              <a class="cert-link" href="assets/certs/aws-cloud-technical-essentials.pdf" target="_blank" rel="noopener">Certificate (PDF)<span class="sr-only"> for AWS Cloud Technical Essentials, opens in a new tab</span></a>
+              <a class="cert-link" href="https://coursera.org/verify/83DSBZRN0632" target="_blank" rel="noopener">Verify on Coursera <span aria-hidden="true">↗</span><span class="sr-only"> for AWS Cloud Technical Essentials, opens in a new tab</span></a>
+            </p>
+          </li>
+          <li class="tile tile-cert" data-accent="sky">
+            <a class="cert-thumb" href="assets/certs/azure-fundamentals.pdf" target="_blank" rel="noopener">
+              <img src="assets/certs/azure-fundamentals.webp" width="720" height="556" loading="lazy" alt="Coursera certificate of completion: Essentials with Azure Fundamentals, Microsoft, awarded to Simran Balchandani on Sep 23, 2026">
+              <span class="sr-only">Open the certificate PDF (opens in a new tab)</span>
+            </a>
+            <span class="cert-issuer">Microsoft</span>
+            <h3>Essentials with Azure Fundamentals</h3>
+            <p class="cert-year">Completed Sep 23, 2026</p>
+            <p class="cert-links">
+              <a class="cert-link" href="assets/certs/azure-fundamentals.pdf" target="_blank" rel="noopener">Certificate (PDF)<span class="sr-only"> for Essentials with Azure Fundamentals, opens in a new tab</span></a>
+              <a class="cert-link" href="https://coursera.org/verify/FSLC4CL1EUNJ" target="_blank" rel="noopener">Verify on Coursera <span aria-hidden="true">↗</span><span class="sr-only"> for Essentials with Azure Fundamentals, opens in a new tab</span></a>
+            </p>
+          </li>
+          <li class="tile tile-cert" data-accent="violet">
+            <a class="cert-thumb" href="assets/certs/advanced-prompt-engineering.pdf" target="_blank" rel="noopener">
+              <img src="assets/certs/advanced-prompt-engineering.webp" width="720" height="556" loading="lazy" alt="Coursera certificate of completion: Advanced Prompt Engineering for All, AI CERTs, awarded to Simran Balchandani on Sep 27, 2026">
+              <span class="sr-only">Open the certificate PDF (opens in a new tab)</span>
+            </a>
+            <span class="cert-issuer">AI CERTs</span>
+            <h3>Advanced Prompt Engineering for All</h3>
+            <p class="cert-year">Completed Sep 27, 2026</p>
+            <p class="cert-links">
+              <a class="cert-link" href="assets/certs/advanced-prompt-engineering.pdf" target="_blank" rel="noopener">Certificate (PDF)<span class="sr-only"> for Advanced Prompt Engineering for All, opens in a new tab</span></a>
+              <a class="cert-link" href="https://coursera.org/verify/44FSUXVZVW8G" target="_blank" rel="noopener">Verify on Coursera <span aria-hidden="true">↗</span><span class="sr-only"> for Advanced Prompt Engineering for All, opens in a new tab</span></a>
+            </p>
+          </li>
+          <li class="tile tile-cert" data-accent="green">
+            <a class="cert-thumb" href="assets/certs/managing-projects-with-ai.pdf" target="_blank" rel="noopener">
+              <img src="assets/certs/managing-projects-with-ai.webp" width="720" height="556" loading="lazy" alt="Coursera certificate of completion: Managing Projects with AI, AI CERTs, awarded to Simran Balchandani on Sep 22, 2026">
+              <span class="sr-only">Open the certificate PDF (opens in a new tab)</span>
+            </a>
+            <span class="cert-issuer">AI CERTs</span>
+            <h3>Managing Projects with AI</h3>
+            <p class="cert-year">Completed Sep 22, 2026</p>
+            <p class="cert-links">
+              <a class="cert-link" href="assets/certs/managing-projects-with-ai.pdf" target="_blank" rel="noopener">Certificate (PDF)<span class="sr-only"> for Managing Projects with AI, opens in a new tab</span></a>
+              <a class="cert-link" href="https://coursera.org/verify/75NGVI22TERO" target="_blank" rel="noopener">Verify on Coursera <span aria-hidden="true">↗</span><span class="sr-only"> for Managing Projects with AI, opens in a new tab</span></a>
+            </p>
+          </li>
+          </ul>
+          <button class="row-arrow next" type="button" aria-label="Scroll right" tabindex="-1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="section section-contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <p class="label">Contact</p>
+          <h2 id="contact-title">Let's talk</h2>
+          <p class="lead">If you'd like to talk about data, a project or an opportunity, send me an email. I'm happy to hear from you.</p>
+        </div>
+        <div class="contact-links reveal">
+          <p class="email-row">
+            <a class="email" href="mailto:simranbalchandani@gmail.com">simranbalchandani@gmail.com</a>
+            <button class="btn btn-info btn-small" type="button" id="copy-email" data-email="simranbalchandani@gmail.com">Copy email</button>
+          </p>
+          <p id="copy-status" class="copy-status" role="status" aria-live="polite"></p>
+          <ul class="social">
+            <li><a href="https://github.com/simranbalchandani0609" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a></li>
+            <li><a href="https://linkedin.com/in/simran-balchandani-421b56434" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">↗</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <p>© <span id="year">2026</span> Simran Balchandani</p>
+      <p><button type="button" class="link-btn" id="replay-intro">Replay the intro</button></p>
+      <p>Written by hand in HTML, CSS and JavaScript. Inspired by streaming interfaces; not affiliated with any streaming service.</p>
+    </div>
+  </footer>
+
+  <!-- Floating Doodle button (always on screen, bottom right) -->
+  <button class="doodle-fab" id="doodle-open" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="sketch" aria-label="Open the doodle pad">
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 20l1-4.5L16.5 4a2.1 2.1 0 013 3L8 18.5 4 20z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14.5 6l3.5 3.5" stroke="currentColor" stroke-width="2"/></svg>
+    <span class="fab-tip" aria-hidden="true">Doodle</span>
+  </button>
+
+  <!-- Doodle panel: a compact floating panel, the page stays visible and scrollable behind it -->
+  <dialog class="sketch" id="sketch" aria-labelledby="sketch-title">
+    <div class="sk-head">
+      <h2 id="sketch-title" tabindex="-1">Doodle</h2>
+      <button class="icon-btn" type="button" id="sk-close" aria-label="Close doodle pad">✕</button>
+    </div>
+    <canvas id="sk-canvas" width="1200" height="800" aria-label="Drawing canvas. Draw with a mouse, finger or stylus. This is an optional extra and not needed to use the site."></canvas>
+    <div class="sk-tools" role="toolbar" aria-label="Drawing tools">
+      <label class="sk-color" title="Colour"><span class="sr-only">Colour</span><input type="color" id="sk-color" value="#e50914"></label>
+      <div class="swatches" role="group" aria-label="Quick colours">
+        <button type="button" class="sw" style="--c:#e50914" data-c="#e50914" aria-label="Red" aria-pressed="true"></button>
+        <button type="button" class="sw" style="--c:#ffffff" data-c="#ffffff" aria-label="White" aria-pressed="false"></button>
+        <button type="button" class="sw" style="--c:#2fb3a8" data-c="#2fb3a8" aria-label="Teal" aria-pressed="false"></button>
+        <button type="button" class="sw" style="--c:#ffc43d" data-c="#ffc43d" aria-label="Amber" aria-pressed="false"></button>
+      </div>
+      <label class="sk-size">Brush <input type="range" id="sk-size" min="2" max="48" value="8" aria-describedby="sk-size-out"><output id="sk-size-out">8</output></label>
+    </div>
+    <div class="sk-actions">
+      <button type="button" class="tbtn" id="sk-pen" aria-pressed="true">Pen</button>
+      <button type="button" class="tbtn" id="sk-eraser" aria-pressed="false">Eraser</button>
+      <button type="button" class="tbtn" id="sk-undo">Undo</button>
+      <button type="button" class="tbtn" id="sk-clear">Clear</button>
+      <button type="button" class="tbtn tbtn-primary" id="sk-save">Download PNG</button>
+    </div>
+    <div class="sketch-confirm" id="sk-confirm" hidden role="alertdialog" aria-labelledby="sk-confirm-text">
+      <p id="sk-confirm-text">Clear the whole drawing? This can't be undone.</p>
+      <button type="button" class="tbtn tbtn-primary" id="sk-yes">Yes, clear it</button>
+      <button type="button" class="tbtn" id="sk-no">Keep drawing</button>
+    </div>
+    <p class="sketch-status" id="sk-status" role="status" aria-live="polite">Stays in this tab. Never uploaded.</p>
+  </dialog>
+
+  <!-- Project detail dialogs (opened from the project tiles) -->
+  <dialog class="detail" id="dlg-medicloud" aria-labelledby="p1-title">
+    <div class="detail-scroll">
+      <form method="dialog" class="detail-close"><button class="icon-btn" aria-label="Close details">✕</button></form>
+      <div class="detail-banner"><img src="assets/img/patient-booking.webp" alt="" width="993" height="700"></div>
+      <div class="detail-body">
+        <ul class="chips chips-status" aria-label="Project details">
+              <li class="chip chip-accent">Working prototype</li>
+              <li class="chip">Group project</li>
+            </ul>
+        <h2 id="p1-title">MediCloud v2</h2>
+        <p class="project-tagline">Hospital appointments and encrypted records in one system.</p>
+        <div class="project-cols">
+            <div>
+              <h4>The problem</h4>
+              <p>A hospital needs one place where patients can book visits, doctors can see what they need before a consultation, and records stay private.</p>
+
+              <h4>What it does</h4>
+              <p>MediCloud v2 is a hospital appointment and encrypted-records system built for AWS. A React website talks to an Express API. Data is stored in DynamoDB, files go to S3 with KMS encryption, and SNS and CloudWatch handle notifications and monitoring, all in the Mumbai region (ap-south-1).</p>
+            </div>
+            <div>
+              <h4>What works</h4>
+              <ul class="ticks">
+                <li>Patients book slots and see their records. Doctors and admins each get their own views, plus a live audit trail.</li>
+                <li>DynamoDB conditional writes stop two people booking the same slot. Login uses JWT, bcrypt and role-based access.</li>
+                <li>v2 adds prescriptions, a health profile with vitals, a symptom check and doctor reviews. The symptom check uses simple built-in rules to suggest a type of doctor. It is not a diagnosis.</li>
+              </ul>
+              <p class="note"><strong>Testing:</strong> 82 API checks and 5 UI flows against a local emulator. The hosted AWS setup hasn't been tested end to end yet.</p>
+            </div>
+          </div>
+        <ul class="chips" aria-label="Technologies used">
+            <li class="chip chip-mono">React</li>
+            <li class="chip chip-mono">Node.js</li>
+            <li class="chip chip-mono">Express</li>
+            <li class="chip chip-mono">DynamoDB</li>
+            <li class="chip chip-mono">S3 + KMS</li>
+            <li class="chip chip-mono">SNS</li>
+            <li class="chip chip-mono">CloudWatch</li>
+            <li class="chip chip-mono">IAM</li>
+            <li class="chip chip-mono">JWT</li>
+            <li class="chip chip-mono">bcrypt</li>
+          </ul>
+        
+        <details class="learned">
+            <summary>What I learned: DynamoDB's reserved words and safe rollbacks</summary>
+            <div class="learned-body">
+              <p>While testing v2, a request failed with a 500 error. I traced it to an attribute I had named <code>method</code>. DynamoDB reserves that word, along with <code>role</code> and <code>status</code>, so it can't be used in a query expression as it is. The local emulator I tested with was more forgiving than real AWS. I fixed it by renaming the attribute, and now I alias those words with <code>#</code> placeholders in every expression.</p>
+              <p>The lesson was to check against the real service's rules instead of trusting the emulator. A check that passes locally doesn't prove it works on AWS.</p>
+              <p>A second lesson was about design. Making v2 only add new tables, and never change the shape of v1's data, is what makes rollback safe. Switching versions just means running a different folder, with no data migration.</p>
+            </div>
+          </details>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="detail" id="dlg-flight" aria-labelledby="p2-title">
+    <div class="detail-scroll">
+      <form method="dialog" class="detail-close"><button class="icon-btn" aria-label="Close details">✕</button></form>
+      <div class="detail-banner"><img src="assets/video/flight-dashboard-poster.jpg" alt="" width="1280" height="720"></div>
+      <div class="detail-body">
+        <ul class="chips chips-status" aria-label="Project details">
+              <li class="chip chip-accent">Working demo</li>
+            </ul>
+        <h2 id="p2-title">Flight Management Dashboard</h2>
+        <p class="project-tagline">Flights, passengers, staff and ticket revenue in one place.</p>
+        <div class="project-cols">
+            <div>
+              <h4>The problem</h4>
+              <p>Flight status, passenger details, employee records and ticket revenue are easier to act on when they sit together, rather than in separate lists.</p>
+
+              <h4>What it does</h4>
+              <p>The dashboard brings flight, passenger, employee and ticket information into one view, so users can track flight status and analyse airline revenue. It is built with FastAPI, MySQL and Chart.js.</p>
+            </div>
+            <div>
+              <h4>What works</h4>
+              <ul class="ticks">
+                <li>Summary cards and interactive charts: delayed against on-time flights, flights per city and an airline breakdown.</li>
+                <li>A flight filter plus search and sortable tables for flights and passengers.</li>
+                <li>Options to add, update or delete records.</li>
+              </ul>
+            </div>
+          </div>
+        <ul class="chips" aria-label="Technologies used">
+            <li class="chip chip-mono">FastAPI</li>
+            <li class="chip chip-mono">MySQL</li>
+            <li class="chip chip-mono">Chart.js</li>
+            <li class="chip chip-mono">JavaScript</li>
+            <li class="chip chip-mono">CSS</li>
+          </ul>
+        <figure class="video-frame">
+            <video controls preload="none" playsinline width="1280" height="720"
+                   poster="assets/video/flight-dashboard-poster.jpg"
+                   aria-describedby="video-desc">
+              <source src="assets/video/flight-dashboard-demo.mp4" type="video/mp4">
+              <source src="assets/video/flight-dashboard-demo.webm" type="video/webm">
+              Your browser can't play this video. <a href="assets/video/flight-dashboard-demo.mp4">Download the clip instead.</a>
+            </video>
+            <figcaption id="video-desc">A 20-second screen recording with no sound. It shows the summary cards, the flight filter, chart tooltips and the flights table. The clip stops before the passenger table, so no passenger details are shown.</figcaption>
+          </figure>
+        <details class="learned">
+            <summary>What I learned: keeping filters, charts and tables in sync</summary>
+            <div class="learned-body">
+              <p>One challenge was making sure the filters updated all the charts and tables consistently. Solving it helped me understand how the frontend connects to the FastAPI backend, and how to keep the dashboard in sync with the data.</p>
+            </div>
+          </details>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="detail" id="dlg-gis" aria-labelledby="p3-title">
+    <div class="detail-scroll">
+      <form method="dialog" class="detail-close"><button class="icon-btn" aria-label="Close details">✕</button></form>
+      <div class="detail-banner"><img src="assets/img/gis-rings.svg" alt="" width="640" height="400"></div>
+      <div class="detail-body">
+        <ul class="chips chips-status" aria-label="Project details">
+              <li class="chip chip-accent">In progress</li>
+              <li class="chip">Research paper</li>
+            </ul>
+        <h2 id="p3-title">Rajkot's restored lakes, seen from space</h2>
+        <p class="project-tagline">A before-and-after satellite study. No results yet.</p>
+        <div class="project-cols">
+            <div>
+              <h4>The question</h4>
+              <p>Rajkot's urban lakes, Atal Sarovar and the Aji–Nyari–Lalpari system, were restored, and the project has drawn plenty of design and architecture coverage. I haven't found a remote-sensing study that measures how much their surface water actually changed, so that is what I'm setting out to do.</p>
+            </div>
+            <div>
+              <h4>The plan</h4>
+              <p>Compare surface water before and after the restoration using satellite data. I'm drawing on the JRC Global Surface Water dataset (1984 to the present), Landsat 5, 8 and 9 and Sentinel-2 imagery through Google Earth Engine, and Rajkot Smart City's GIS ward boundaries.</p>
+            </div>
+          </div>
+        <ul class="chips" aria-label="Tools and data">
+            <li class="chip chip-mono">GIS</li>
+            <li class="chip chip-mono">Google Earth Engine</li>
+            <li class="chip chip-mono">Landsat</li>
+            <li class="chip chip-mono">Sentinel-2</li>
+            <li class="chip chip-mono">JRC Global Surface Water</li>
+          </ul>
+        
+        
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Screenshot enlarger -->
+  <dialog class="lightbox" id="lightbox" aria-label="Enlarged screenshot">
+    <form method="dialog"><button class="lightbox-close" aria-label="Close enlarged screenshot">Close</button></form>
+    <img id="lightbox-img" alt="" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+  </dialog>
+
+  <!-- Jump palette (press K or / ; Escape closes) -->
+  <dialog class="palette" id="palette" aria-label="Jump to a section or action">
+    <label class="sr-only" for="palette-input">Search sections and actions</label>
+    <input id="palette-input" type="text" placeholder="Jump to… (try “projects” or “email”)" autocomplete="off" spellcheck="false">
+    <ul id="palette-list" role="listbox" aria-label="Results"></ul>
+    <p class="palette-hint">↑ ↓ to move · Enter to go · Esc to close</p>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
