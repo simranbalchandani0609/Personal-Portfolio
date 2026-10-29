@@ -1,4 +1,4 @@
-# Simran Balchandani: personal portfolio (v3, cinematic)
+# Simran Balchandani: personal portfolio 
 
 A hand-coded portfolio for a college assignment (Personal Portfolio Website, due 17 October 2026).
 It is plain **HTML, CSS and JavaScript**: no framework, no build step, no template, no tracking, no backend.
